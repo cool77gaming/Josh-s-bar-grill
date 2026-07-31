@@ -88,14 +88,15 @@
 
   /* ---------- Hours / open-now status ---------- */
   // 0 = Sunday ... 6 = Saturday. Close hour > 24 means "past midnight".
+  // Source: Josh's own Facebook page hours block.
   var HOURS = [
-    { open: 12, close: 22 },   // Sun
-    { open: 11, close: 24 },   // Mon
-    { open: 11, close: 24 },   // Tue
-    { open: 11, close: 24 },   // Wed
-    { open: 11, close: 24 },   // Thu
+    { open: 12, close: 26 },   // Sun (2am)
+    { open: 11, close: 26 },   // Mon (2am)
+    { open: 11, close: 26 },   // Tue (2am)
+    { open: 11, close: 26 },   // Wed (2am)
+    { open: 11, close: 26 },   // Thu (2am)
     { open: 11, close: 26 },   // Fri (2am)
-    { open: 11, close: 26 },   // Sat (2am)
+    { open: 12, close: 26 },   // Sat (2am)
   ];
 
   function easternNow() {
