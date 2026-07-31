@@ -6,6 +6,15 @@
   /* ---------- Mobile nav ---------- */
   var navToggle = document.getElementById("navToggle");
   var primaryNav = document.getElementById("primaryNav");
+
+  // Respect reduced-motion at the resource level, not just visually --
+  // drop the animated widget entirely instead of relying on display:none
+  // to stop it from running.
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var navLottie = document.getElementById("navToggleLottie");
+    if (navLottie) navLottie.remove();
+  }
+
   navToggle.addEventListener("click", function () {
     var open = primaryNav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(open));
