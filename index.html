@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh's Bar & Grill | Hampton, VA</title>
+<meta name="description" content="Josh's Bar & Grill — 1938 E Pembroke Ave, Hampton, VA 23663. Handmade burgers, BBQ, steak & seafood, cold beer, pool, darts & live music.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%94%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">🍔</span>
+      <span class="brand-text">Josh's <em>Bar &amp; Grill</em></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav">
+      <a href="#tabs" data-tab-link="menu">Menu</a>
+      <a href="#tabs" data-tab-link="hours">Hours</a>
+      <a href="#tabs" data-tab-link="reviews">Reviews</a>
+      <a href="#tabs" data-tab-link="location">Location</a>
+      <a class="nav-cta" href="#tabs" data-tab-link="order">Order &amp; Reserve</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Hampton, Virginia • Est. neighborhood favorite</p>
+      <h1>Good food. Cold beer.<br>Josh's Bar &amp; Grill.</h1>
+      <p class="hero-sub">
+        A low-key neighborhood bar &amp; grill on E Pembroke Ave serving handmade burgers,
+        BBQ, steak &amp; seafood — with pool, darts, TV sports, and live music on the weekend.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-tab-link="order">Order &amp; Reserve</button>
+        <button class="btn btn-ghost" data-tab-link="menu">View Menu</button>
+        <a class="btn btn-outline" id="heroDirections" href="#" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="status-pill" id="statusPill">
+          <span class="dot" id="statusDot"></span>
+          <span id="statusText">Checking hours…</span>
+        </div>
+        <a class="hero-phone" href="tel:+17577238003">📞 (757) 723-8003</a>
+        <span class="hero-address">📍 1938 E Pembroke Ave, Hampton, VA 23663</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="wrap highlight-grid">
+      <div class="highlight-card">
+        <span class="highlight-icon">🍔</span>
+        <h3>Handmade Burgers</h3>
+        <p>Half-pound patties made in-house, cooked to order.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🎱</span>
+        <h3>Pool &amp; Darts</h3>
+        <p>Shoot pool, throw darts, catch the game on every TV.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🎤</span>
+        <h3>Live Music &amp; Karaoke</h3>
+        <p>Bands on Friday nights, DJ &amp; karaoke on Saturdays.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🍺</span>
+        <h3>Cold Beer, Good Company</h3>
+        <p>Rotating drafts, house cocktails, and a friendly crowd.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tabs-section" id="tabs">
+    <div class="wrap">
+      <div class="tabs-nav" role="tablist" aria-label="Restaurant information">
+        <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="panel-menu" id="tab-menu" data-tab="menu">
+          <span class="tab-icon">📋</span> Menu
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-hours" id="tab-hours" data-tab="hours">
+          <span class="tab-icon">🕒</span> Hours
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-reviews" id="tab-reviews" data-tab="reviews">
+          <span class="tab-icon">⭐</span> Reviews
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-location" id="tab-location" data-tab="location">
+          <span class="tab-icon">📍</span> Location
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-order" id="tab-order" data-tab="order">
+          <span class="tab-icon">🛵</span> Order &amp; Reserve
+        </button>
+      </div>
+
+      <!-- MENU PANEL -->
+      <div class="tab-panel is-active" id="panel-menu" role="tabpanel" aria-labelledby="tab-menu">
+        <div class="panel-head">
+          <h2>Menu</h2>
+          <div class="panel-head-actions">
+            <a class="btn btn-small btn-outline" href="assets/menu/joshs-menu.pdf" download>Download PDF</a>
+            <a class="btn btn-small btn-ghost" href="assets/menu/joshs-menu.pdf" target="_blank" rel="noopener">Open in new tab</a>
+          </div>
+        </div>
+        <p class="panel-note">
+          Starter sample menu shown below — swap <code>assets/menu/joshs-menu.pdf</code> with Josh's current PDF menu any time and it updates here automatically.
+        </p>
+        <div class="pdf-viewer">
+          <object data="assets/menu/joshs-menu.pdf#view=FitH" type="application/pdf" class="pdf-object">
+            <div class="pdf-fallback">
+              <p>Your browser can't preview PDFs inline.</p>
+              <a class="btn btn-primary" href="assets/menu/joshs-menu.pdf" target="_blank" rel="noopener">Open the Menu PDF</a>
+            </div>
+          </object>
+        </div>
+      </div>
+
+      <!-- HOURS PANEL -->
+      <div class="tab-panel" id="panel-hours" role="tabpanel" aria-labelledby="tab-hours" hidden>
+        <div class="panel-head"><h2>Hours</h2></div>
+        <p class="panel-note">Hours below are compiled from public listings — please confirm with the restaurant, especially around holidays.</p>
+        <table class="hours-table" id="hoursTable" aria-label="Weekly hours">
+          <tbody>
+            <tr data-day="0"><th>Sunday</th><td>12:00 PM – 10:00 PM</td></tr>
+            <tr data-day="1"><th>Monday</th><td>11:00 AM – 12:00 AM</td></tr>
+            <tr data-day="2"><th>Tuesday</th><td>11:00 AM – 12:00 AM</td></tr>
+            <tr data-day="3"><th>Wednesday</th><td>11:00 AM – 12:00 AM</td></tr>
+            <tr data-day="4"><th>Thursday</th><td>11:00 AM – 12:00 AM</td></tr>
+            <tr data-day="5"><th>Friday</th><td>11:00 AM – 2:00 AM</td></tr>
+            <tr data-day="6"><th>Saturday</th><td>11:00 AM – 2:00 AM</td></tr>
+          </tbody>
+        </table>
+        <div class="events-strip">
+          <div class="event-card"><strong>Friday</strong><span>Live Bands</span></div>
+          <div class="event-card"><strong>Saturday</strong><span>DJ &amp; Karaoke</span></div>
+        </div>
+      </div>
+
+      <!-- REVIEWS PANEL -->
+      <div class="tab-panel" id="panel-reviews" role="tabpanel" aria-labelledby="tab-reviews" hidden>
+        <div class="panel-head"><h2>Reviews</h2></div>
+        <p class="panel-note">Live star counts aren't pulled in automatically (that needs a paid Yelp/Google API key — see <code>js/config.js</code> to wire one up). Ratings below are current as of this build.</p>
+
+        <div class="review-summary">
+          <div class="rating-card">
+            <span class="rating-num">4.3–4.5★</span>
+            <span class="rating-src">Aggregate of public reviews</span>
+          </div>
+          <div class="rating-links">
+            <a class="btn btn-small btn-outline" href="https://www.yelp.com/biz/joshs-bar-and-grill-hampton" target="_blank" rel="noopener">Yelp Reviews</a>
+            <a class="btn btn-small btn-outline" href="https://www.tripadvisor.com/Restaurant_Review-g57804-d4612742-Reviews-Josh_s_Bar_Grill-Hampton_Virginia.html" target="_blank" rel="noopener">TripAdvisor</a>
+            <a class="btn btn-small btn-outline" id="googleReviewsLink" href="#" target="_blank" rel="noopener">Google Reviews</a>
+          </div>
+        </div>
+
+        <h3 class="subhead">What guests mention most</h3>
+        <div class="theme-grid">
+          <div class="theme-card"><span class="theme-icon">🍔</span><p>Fresh, made-to-order burgers — the cheeseburger and bacon cheeseburger come up again and again.</p></div>
+          <div class="theme-card"><span class="theme-icon">🙂</span><p>Friendly, attentive staff and a welcoming, low-key neighborhood vibe.</p></div>
+          <div class="theme-card"><span class="theme-icon">💵</span><p>Reasonable prices for generous portions.</p></div>
+          <div class="theme-card"><span class="theme-icon">🎶</span><p>Weekend entertainment — live bands and karaoke — is a recurring highlight.</p></div>
+        </div>
+      </div>
+
+      <!-- LOCATION PANEL -->
+      <div class="tab-panel" id="panel-location" role="tabpanel" aria-labelledby="tab-location" hidden>
+        <div class="panel-head"><h2>Location</h2></div>
+        <div class="location-grid">
+          <div id="map" class="map" role="img" aria-label="Map showing Josh's Bar & Grill at 1938 E Pembroke Ave, Hampton, VA"></div>
+          <div class="location-info">
+            <h3>Josh's Bar &amp; Grill</h3>
+            <address>
+              1938 E Pembroke Ave<br>
+              Hampton, VA 23663
+            </address>
+            <a class="hero-phone" href="tel:+17577238003">📞 (757) 723-8003</a>
+            <a class="btn btn-primary" id="directionsBtn" href="#" target="_blank" rel="noopener">Get Directions</a>
+            <p class="panel-note small">Near Phoebus / Downtown Hampton — close to Fort Monroe and the Hampton waterfront.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDER / RESERVE PANEL -->
+      <div class="tab-panel" id="panel-order" role="tabpanel" aria-labelledby="tab-order" hidden>
+        <div class="panel-head"><h2>Order &amp; Reserve</h2></div>
+        <p class="panel-note">
+          These are ready-made integration slots. Drop a real link into <code>js/config.js</code> for any of the
+          services below (online ordering, delivery apps, reservations, gift cards) and the matching button goes live —
+          no other code changes needed.
+        </p>
+        <div class="integration-grid" id="integrationGrid"><!-- populated by js/main.js --></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>Stop in and see us on Pembroke Ave.</h2>
+        <p>Open late, close to home, always good company.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" id="ctaDirections" href="#" target="_blank" rel="noopener">Get Directions</a>
+        <a class="btn btn-outline" href="tel:+17577238003">Call (757) 723-8003</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <span class="brand-text small">Josh's <em>Bar &amp; Grill</em></span>
+      <p>1938 E Pembroke Ave, Hampton, VA 23663 · (757) 723-8003</p>
+    </div>
+    <div class="footer-social">
+      <a href="#" id="footerFacebook" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+      <a href="#" id="footerInstagram" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+    </div>
+    <p class="footer-note">Fan-built informational site, not officially affiliated with Josh's Bar &amp; Grill. Please verify hours, menu &amp; pricing before visiting.</p>
+  </div>
+</footer>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
