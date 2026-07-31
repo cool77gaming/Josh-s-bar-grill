@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh's Bar & Grill | Hampton, VA</title>
+<meta name="description" content="Josh's Bar & Grill — a great local place for food, fun & friendly faces. 1938 E Pembroke Ave, Hampton, VA 23663. Famous burgers, steak & seafood, cold beer, pool, darts & live music.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%94%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8" /><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7" /><path d="m2.1 21.8 6.4-6.3" /><path d="m19 5-7 7" /></svg></span>
+      <span class="brand-text">Josh's <em>Bar &amp; Grill</em></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav">
+      <a href="#tabs" data-tab-link="menu">Menu</a>
+      <a href="#tabs" data-tab-link="hours">Hours</a>
+      <a href="#tabs" data-tab-link="reviews">Reviews</a>
+      <a href="#tabs" data-tab-link="location">Location</a>
+      <a class="nav-cta" href="#tabs" data-tab-link="order">Order &amp; Reserve</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Hampton, Virginia</p>
+      <p class="hero-tagline script">A great local place for food, fun &amp; friendly faces.</p>
+      <h1>Josh's Bar &amp; Grill</h1>
+      <p class="hero-sub">
+        Come as you are. Josh's Famous Burgers, steaks &amp; seafood, cold beer, and a game of pool —
+        a family-owned neighborhood spot on E Pembroke Ave, no fuss about it.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-tab-link="order">Order &amp; Reserve</button>
+        <button class="btn btn-ghost" data-tab-link="menu">View Menu</button>
+        <a class="btn btn-outline" id="heroDirections" href="#" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="status-pill" id="statusPill">
+          <span class="dot" id="statusDot"></span>
+          <span id="statusText">Checking hours…</span>
+        </div>
+        <a class="hero-phone" href="tel:+17577238003"><svg class="icon icon-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg> (757) 723-8003</a>
+        <span class="hero-address"><svg class="icon icon-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> 1938 E Pembroke Ave, Hampton, VA 23663</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="wrap highlight-grid">
+      <div class="highlight-card">
+        <span class="highlight-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" /></svg></span>
+        <h3>Handmade Burgers</h3>
+        <p>Half-pound patties made in-house, cooked to order.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg></span>
+        <h3>Pool &amp; Darts</h3>
+        <p>Shoot pool, throw darts, catch the game on every TV.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg></span>
+        <h3>Live Music &amp; Karaoke</h3>
+        <p>Bands on Friday nights, DJ &amp; karaoke on Saturdays.</p>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 11h1a3 3 0 0 1 0 6h-1" /><path d="M9 12v6" /><path d="M13 12v6" /><path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.72.5-2.5.5a2.5 2.5 0 0 1 0-5c.78 0 1.57.5 2.5.5S9.44 2 11 2s2 1.5 3 1.5 1.72-.5 2.5-.5a2.5 2.5 0 0 1 0 5c-.78 0-1.5-.5-2.5-.5Z" /><path d="M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8" /></svg></span>
+        <h3>Cold Beer, Good Company</h3>
+        <p>Rotating drafts, house cocktails, and a friendly crowd.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tabs-section" id="tabs">
+    <div class="wrap">
+      <div class="tabs-nav" role="tablist" aria-label="Restaurant information">
+        <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="panel-menu" id="tab-menu" data-tab="menu">
+          <span class="tab-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="M12 11h4" /><path d="M12 16h4" /><path d="M8 11h.01" /><path d="M8 16h.01" /></svg></span> Menu
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-hours" id="tab-hours" data-tab="hours">
+          <span class="tab-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg></span> Hours
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-reviews" id="tab-reviews" data-tab="reviews">
+          <span class="tab-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg></span> Reviews
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-location" id="tab-location" data-tab="location">
+          <span class="tab-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg></span> Location
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-order" id="tab-order" data-tab="order">
+          <span class="tab-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18.5" cy="17.5" r="3.5" /><circle cx="5.5" cy="17.5" r="3.5" /><circle cx="15" cy="5" r="1" /><path d="M12 17.5V14l-3-3 4-3 2 3h2" /></svg></span> Order &amp; Reserve
+        </button>
+      </div>
+
+      <!-- MENU PANEL -->
+      <div class="tab-panel is-active" id="panel-menu" role="tabpanel" aria-labelledby="tab-menu">
+        <div class="panel-head">
+          <h2>Menu</h2>
+          <div class="panel-head-actions">
+            <a class="btn btn-small btn-outline" href="assets/menu/joshs-menu.pdf" download>Download PDF</a>
+            <a class="btn btn-small btn-ghost" href="assets/menu/joshs-menu.pdf" target="_blank" rel="noopener">Open in new tab</a>
+          </div>
+        </div>
+        <p class="panel-note">
+          This is Josh's actual menu, typed up from the in-house copy — swap <code>assets/menu/joshs-menu.pdf</code> any time prices change and it updates here automatically.
+        </p>
+        <div class="pdf-viewer">
+          <object data="assets/menu/joshs-menu.pdf#view=FitH" type="application/pdf" class="pdf-object">
+            <div class="pdf-fallback">
+              <p>Your browser can't preview PDFs inline.</p>
+              <a class="btn btn-primary" href="assets/menu/joshs-menu.pdf" target="_blank" rel="noopener">Open the Menu PDF</a>
+            </div>
+          </object>
+        </div>
+      </div>
+
+      <!-- HOURS PANEL -->
+      <div class="tab-panel" id="panel-hours" role="tabpanel" aria-labelledby="tab-hours" hidden>
+        <div class="panel-head"><h2>Hours</h2></div>
+        <p class="panel-note">Straight from Josh's own Facebook page — please confirm with the restaurant around holidays.</p>
+        <table class="hours-table" id="hoursTable" aria-label="Weekly hours">
+          <tbody>
+            <tr data-day="0"><th>Sunday</th><td>12:00 PM – 2:00 AM</td></tr>
+            <tr data-day="1"><th>Monday</th><td>11:00 AM – 2:00 AM</td></tr>
+            <tr data-day="2"><th>Tuesday</th><td>11:00 AM – 2:00 AM</td></tr>
+            <tr data-day="3"><th>Wednesday</th><td>11:00 AM – 2:00 AM</td></tr>
+            <tr data-day="4"><th>Thursday</th><td>11:00 AM – 2:00 AM</td></tr>
+            <tr data-day="5"><th>Friday</th><td>11:00 AM – 2:00 AM</td></tr>
+            <tr data-day="6"><th>Saturday</th><td>12:00 PM – 2:00 AM</td></tr>
+          </tbody>
+        </table>
+        <div class="events-strip">
+          <div class="event-card"><strong>Friday</strong><span>Live Bands</span></div>
+          <div class="event-card"><strong>Saturday</strong><span>DJ &amp; Karaoke</span></div>
+        </div>
+      </div>
+
+      <!-- REVIEWS PANEL -->
+      <div class="tab-panel" id="panel-reviews" role="tabpanel" aria-labelledby="tab-reviews" hidden>
+        <div class="panel-head"><h2>Reviews</h2></div>
+        <p class="panel-note">Live star counts aren't pulled in automatically (that needs a paid Yelp/Google API key — see <code>js/config.js</code> to wire one up). Ratings below are current as of this build.</p>
+
+        <div class="review-summary">
+          <div class="rating-card">
+            <span class="rating-num">4.3–4.5★</span>
+            <span class="rating-src">Aggregate of public reviews</span>
+          </div>
+          <div class="rating-links">
+            <a class="btn btn-small btn-outline" href="https://www.yelp.com/biz/joshs-bar-and-grill-hampton" target="_blank" rel="noopener">Yelp Reviews</a>
+            <a class="btn btn-small btn-outline" href="https://www.tripadvisor.com/Restaurant_Review-g57804-d4612742-Reviews-Josh_s_Bar_Grill-Hampton_Virginia.html" target="_blank" rel="noopener">TripAdvisor</a>
+            <a class="btn btn-small btn-outline" id="googleReviewsLink" href="#" target="_blank" rel="noopener">Google Reviews</a>
+          </div>
+        </div>
+
+        <h3 class="subhead">What guests mention most</h3>
+        <div class="theme-grid">
+          <div class="theme-card"><span class="theme-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8" /><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7" /><path d="m2.1 21.8 6.4-6.3" /><path d="m19 5-7 7" /></svg></span><p>Fresh, made-to-order burgers — the cheeseburger and bacon cheeseburger come up again and again.</p></div>
+          <div class="theme-card"><span class="theme-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" x2="9.01" y1="9" y2="9" /><line x1="15" x2="15.01" y1="9" y2="9" /></svg></span><p>Friendly, attentive staff and a welcoming, low-key neighborhood vibe.</p></div>
+          <div class="theme-card"><span class="theme-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg></span><p>Reasonable prices for generous portions.</p></div>
+          <div class="theme-card"><span class="theme-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg></span><p>Weekend entertainment — live bands and karaoke — is a recurring highlight.</p></div>
+        </div>
+      </div>
+
+      <!-- LOCATION PANEL -->
+      <div class="tab-panel" id="panel-location" role="tabpanel" aria-labelledby="tab-location" hidden>
+        <div class="panel-head"><h2>Location</h2></div>
+        <div class="location-grid">
+          <div id="map" class="map" role="img" aria-label="Map showing Josh's Bar & Grill at 1938 E Pembroke Ave, Hampton, VA"></div>
+          <div class="location-info">
+            <h3>Josh's Bar &amp; Grill</h3>
+            <address>
+              1938 E Pembroke Ave<br>
+              Hampton, VA 23663
+            </address>
+            <a class="hero-phone" href="tel:+17577238003"><svg class="icon icon-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg> (757) 723-8003</a>
+            <a class="btn btn-primary" id="directionsBtn" href="#" target="_blank" rel="noopener">Get Directions</a>
+            <p class="panel-note small">Near Phoebus / Downtown Hampton — close to Fort Monroe and the Hampton waterfront.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDER / RESERVE PANEL -->
+      <div class="tab-panel" id="panel-order" role="tabpanel" aria-labelledby="tab-order" hidden>
+        <div class="panel-head"><h2>Order &amp; Reserve</h2></div>
+        <p class="panel-note">
+          These are ready-made integration slots. Drop a real link into <code>js/config.js</code> for any of the
+          services below (online ordering, delivery apps, reservations, gift cards) and the matching button goes live —
+          no other code changes needed.
+        </p>
+        <div class="integration-grid" id="integrationGrid"><!-- populated by js/main.js --></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>Stop in and see us on Pembroke Ave.</h2>
+        <p>Open late, close to home, always good company.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" id="ctaDirections" href="#" target="_blank" rel="noopener">Get Directions</a>
+        <a class="btn btn-outline" href="tel:+17577238003">Call (757) 723-8003</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <span class="brand-text small">Josh's <em>Bar &amp; Grill</em></span>
+      <p>1938 E Pembroke Ave, Hampton, VA 23663 · (757) 723-8003</p>
+    </div>
+    <div class="footer-social">
+      <a href="#" id="footerFacebook" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+      <a href="#" id="footerInstagram" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+    </div>
+    <p class="footer-note">Fan-built informational site, not officially affiliated with Josh's Bar &amp; Grill. Please verify hours, menu &amp; pricing before visiting.</p>
+  </div>
+</footer>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
