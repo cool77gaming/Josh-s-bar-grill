@@ -21,7 +21,14 @@
     </a>
 
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+      <dotlottie-wc
+        class="nav-toggle-lottie"
+        id="navToggleLottie"
+        src="https://lottie.host/76476a3e-0ae0-46d0-8eca-57f5c6078f64/zcLvImezFV.json"
+        autoplay
+        loop
+      ></dotlottie-wc>
+      <span class="nav-toggle-bars"><span></span><span></span><span></span></span>
     </button>
 
     <nav class="primary-nav" id="primaryNav">
@@ -48,8 +55,8 @@
       </p>
 
       <div class="hero-actions">
-        <button class="btn btn-primary" data-tab-link="order">Order &amp; Reserve</button>
-        <button class="btn btn-ghost" data-tab-link="menu">View Menu</button>
+        <a class="btn btn-primary" href="#tabs" data-tab-link="order">Order &amp; Reserve</a>
+        <a class="btn btn-ghost" href="#tabs" data-tab-link="menu">View Menu</a>
         <a class="btn btn-outline" id="heroDirections" href="#" target="_blank" rel="noopener">Get Directions</a>
       </div>
 
@@ -239,6 +246,7 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.4/dist/dotlottie-wc.js" type="module"></script>
 <script src="vendor/leaflet/leaflet.js"></script>
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
