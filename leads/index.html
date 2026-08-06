@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hampton, VA Business Leads Dashboard</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --border: #e2e5ea;
+    --text: #1a1d23;
+    --muted: #667085;
+    --accent: #2563eb;
+    --hot: #dc2626;
+    --hot-bg: #fef2f2;
+    --warm: #d97706;
+    --warm-bg: #fffbeb;
+    --cool: #0891b2;
+    --cool-bg: #ecfeff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --card: #1c1f26;
+      --border: #2c303a;
+      --text: #edeef0;
+      --muted: #9aa2b1;
+      --accent: #5b9bff;
+      --hot-bg: #3a1414;
+      --warm-bg: #332405;
+      --cool-bg: #06282c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+  }
+  header {
+    padding: 2rem 1.25rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.5rem; margin: 0 0 0.25rem; }
+  .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 1.25rem; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .stat .n { font-size: 1.6rem; font-weight: 700; }
+  .stat .l { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .tab {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .name { font-weight: 700; font-size: 1.02rem; }
+  .type { color: var(--muted); font-size: 0.85rem; }
+
+  .badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge.no_website { background: var(--hot-bg); color: var(--hot); }
+  .badge.outdated { background: var(--warm-bg); color: var(--warm); }
+  .badge.low_reviews { background: var(--cool-bg); color: var(--cool); }
+
+  .rank {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--hot);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+
+  .row {
+    font-size: 0.88rem;
+  }
+  .row b { color: var(--text); }
+  .sell-line { color: var(--text); }
+  .reason { color: var(--muted); }
+
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem 3rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hampton, VA Business Leads</h1>
+  <p class="sub" id="subtitle">Loading…</p>
+  <div class="stats" id="stats"></div>
+  <div class="tabs" id="tabs"></div>
+</header>
+
+<main id="main"></main>
+
+<footer>
+  Data pulled from public Google Business Profile listings via the
+  <a href="https://github.com/gosom/google-maps-scraper" target="_blank" rel="noopener">gosom/google-maps-scraper</a>
+  agent skill, then spot-checked by hand. Verify before outreach — this is a point-in-time snapshot.
+</footer>
+
+<script id="lead-data" type="application/json">
+{"generated":"2026-08-06","leads":[{"name":"Critter Cleaners Pet Grooming Salon & Mobile Grooming","phone":"+1 757-848-5260","type":"Pet groomer","website":null,"reviewCount":338,"rating":4.2,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 338 Google reviews at 4.2\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":400},{"name":"Carter's Corner, Llc.","phone":"+1 757-850-1230","type":"Auto repair shop","website":null,"reviewCount":200,"rating":4.4,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 200 Google reviews at 4.4\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":300},{"name":"Phat Auto Service","phone":"+1 757-224-2798","type":"Auto repair shop","website":null,"reviewCount":164,"rating":4.1,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 164 Google reviews at 4.1\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":264},{"name":"Childress Service Center","phone":"+1 757-851-7329","type":"Auto repair shop","website":null,"reviewCount":161,"rating":4.4,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 161 Google reviews at 4.4\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":261},{"name":"Barney's Auto","phone":"+1 757-726-0380","type":"Auto repair shop","website":null,"reviewCount":156,"rating":4.7,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 156 Google reviews at 4.7\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":256},{"name":"B K's Barber Shop","phone":"+1 757-723-3220","type":"Barber shop","website":null,"reviewCount":145,"rating":4.9,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 145 Google reviews at 4.9\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":245},{"name":"Monica's Dominican Hair & Babershop","phone":"+1 757-265-7560","type":"Beauty salon","website":null,"reviewCount":140,"rating":3.9,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 140 Google reviews at 3.9\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":240},{"name":"AMI Electric \u2013 Electrical, Excavation & Site Lighting Services","phone":"+1 757-509-3325","type":"Electrician","website":null,"reviewCount":130,"rating":4.7,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 130 Google reviews at 4.7\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":230},{"name":"Appliance Specialist","phone":"+1 757-509-3397","type":"Appliance repair service","website":null,"reviewCount":125,"rating":4.6,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 125 Google reviews at 4.6\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":225},{"name":"Kings Plumbing","phone":"+1 757-222-0363","type":"Plumber","website":null,"reviewCount":124,"rating":4.9,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 124 Google reviews at 4.9\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":224},{"name":"Affordable Tires & Auto","phone":"+1 757-989-9999","type":"Auto repair shop","website":null,"reviewCount":107,"rating":4.6,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 107 Google reviews at 4.6\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":207},{"name":"757 Seven Cities Plumbing & Drain Cleaning","phone":"+1 757-506-1307","type":"Plumber","website":null,"reviewCount":94,"rating":4.6,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 94 Google reviews at 4.6\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":194},{"name":"Good Looks Barbershop and Beauty Salon","phone":"+1 757-727-0660","type":"Beauty salon","website":null,"reviewCount":90,"rating":4.6,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 90 Google reviews at 4.6\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":190},{"name":"D H PRECISION AUTO CARE LLC","phone":"+1 757-298-2693","type":"Auto repair shop","website":null,"reviewCount":82,"rating":4.3,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 82 Google reviews at 4.3\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":182},{"name":"TLT Hair Bar","phone":"+1 757-722-1114","type":"Hair salon","website":null,"reviewCount":73,"rating":4.9,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 73 Google reviews at 4.9\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":173},{"name":"Diva Styles Salon","phone":"+1 757-848-5899","type":"Beauty salon","website":null,"reviewCount":70,"rating":4.7,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 70 Google reviews at 4.7\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":170},{"name":"Cuttin Up Salon","phone":"+1 757-369-9449","type":"Beauty salon","website":null,"reviewCount":57,"rating":4.8,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 57 Google reviews at 4.8\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":157},{"name":"Coastal Electric Services","phone":"+1 757-513-7700","type":"Electrician","website":null,"reviewCount":42,"rating":5.0,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 42 Google reviews at 5.0\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":142},{"name":"Maids On Demand - Hampton Roads","phone":"+1 757-990-3057","type":"House cleaning service","website":null,"reviewCount":37,"rating":4.8,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 37 Google reviews at 4.8\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":137},{"name":"Steve Carson Plumbing & Son","phone":"+1 757-838-2561","type":"Plumber","website":null,"reviewCount":30,"rating":4.8,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 30 Google reviews at 4.8\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":130},{"name":"Heating & Air Conditioning Services","phone":"+1 757-863-6651","type":"Air conditioning contractor","website":null,"reviewCount":25,"rating":4.4,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 25 Google reviews at 4.4\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":125},{"name":"Doggie Stylin Grooming Salon","phone":"+1 757-825-1300","type":"Pet groomer","website":null,"reviewCount":22,"rating":4.5,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 22 Google reviews at 4.5\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":122},{"name":"First Choice Plumbing","phone":"+1 757-827-1072","type":"Plumber","website":null,"reviewCount":14,"rating":3.9,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 14 Google reviews at 3.9\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":114},{"name":"VanEsthers cleaning services","phone":"+1 757-944-8547","type":"House cleaning service","website":null,"reviewCount":9,"rating":5.0,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 9 Google reviews at 5.0\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":109},{"name":"Canine Wellness\ud83d\udc3e Holistic grooming service","phone":"+1 757-650-7449","type":"Pet groomer","website":null,"reviewCount":8,"rating":5.0,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 8 Google reviews at 5.0\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":108},{"name":"Lashawndas Cleaning Services","phone":"+1 757-303-2476","type":"House cleaning service","website":null,"reviewCount":3,"rating":5.0,"sell":"New Website Build","tier":"no_website","reason":"No website listed despite 3 Google reviews at 5.0\u2605 \u2014 an established local reputation with nowhere to send customers online.","score":103},{"name":"Dog Dynasty","phone":"+1 757-593-5067","type":"Pet groomer","website":null,"reviewCount":0,"rating":0.0,"sell":"New Website Build","tier":"no_website","reason":"No website and no Google reviews yet on record \u2014 likely a newer business that needs a full online presence built from scratch.","score":100},{"name":"Paws & Rewind Grooming","phone":"+1 757-276-1420","type":"Pet groomer","website":"https://pawsandrewindgrooming.com/","reviewCount":12,"rating":5.0,"sell":"Website Redesign","tier":"outdated","reason":"Generic stock imagery, visible typos in the copy, cluttered footer, no copyright year shown, and minimal mobile optimization.","score":56.0},{"name":"Three Brothers Plumbing","phone":"+1 757-597-1893","type":"Plumber","website":"https://threebrothersplumbinghampton.com/","reviewCount":9,"rating":5.0,"sell":"Website Redesign","tier":"outdated","reason":"Content is mismatched (plumbing header, appliance-repair body), shows a 'parked domain' notice and pay-per-call lead-gen disclaimers \u2014 this is not a real branded site.","score":54.5},{"name":"Eileen's Housekeeping LLC","phone":"+1 757-346-1177","type":"House cleaning service","website":"http://www.housekeeping.irish/","reviewCount":5,"rating":5.0,"sell":"Website Redesign","tier":"outdated","reason":"Wix template relying on stock photography; copyright shows 2020-2026 but the layout feels static with minimal mobile-friendliness.","score":52.5},{"name":"Harbor Construction Co Inc","phone":"+1 757-722-9823","type":"Electrician","website":"https://www.hcci1.com/","reviewCount":4,"rating":4.3,"sell":"Website Redesign","tier":"outdated","reason":"Copyright reads 2023 but the site is template-based with generic image placeholders, basic navigation, and no responsive design cues.","score":52.0},{"name":"CB Jenkins Construction, LLC","phone":"+1 757-771-0989","type":"Electrician","website":"https://www.offshore-electric.com/","reviewCount":2,"rating":5.0,"sell":"Website Redesign","tier":"outdated","reason":"Their listed domain 301-redirects to a competitor/parent site (jenkinsmep.com) rather than their own branded page \u2014 effectively no independent web presence.","score":51.0},{"name":"Sir Fix It","phone":"+1 757-544-3682","type":"General contractor","website":"https://www.sirfixitva.com/","reviewCount":1,"rating":5.0,"sell":"Website Redesign","tier":"outdated","reason":"Stock imagery, basic layout, no visible copyright year, and no meaningful design polish \u2014 looks like an untouched starter template.","score":50.5},{"name":"Crystal Glow","phone":"+1 757-834-7916","type":"House cleaning service","website":"https://crystalglows.site/","reviewCount":0,"rating":0.0,"sell":"Website Redesign","tier":"outdated","reason":"Template-based site with generic placeholder copy and duplicate boilerplate pages despite a 2025 copyright \u2014 reads as a low-effort local-service template, not a real brand presence.","score":50.0},{"name":"DLG Electric","phone":"+1 757-869-5613","type":"Electrician","website":"https://www.dlg-electric.com/contact_us","reviewCount":0,"rating":0.0,"sell":"Website Redesign","tier":"outdated","reason":"Copyright notice still reads 2012; minimal, non-responsive design with no modern styling \u2014 over a decade out of date.","score":50.0},{"name":"JP Harvey Engineering Solutions (JPHES)","phone":"+1 757-722-7074","type":"Engineering consultant","website":"http://www.jphes.com/","reviewCount":2,"rating":5.0,"sell":"Google Reviews Growth","tier":"low_reviews","reason":"Modern, well-maintained site (portfolio, testimonials, blog) but only 2 Google reviews \u2014 a strong Google-review-growth candidate rather than a rebuild.","score":33},{"name":"MarMaids Cleaning Service","phone":"+1 619-366-2748","type":"House cleaning service","website":"https://marmaids.com/","reviewCount":11,"rating":5.0,"sell":"Google Reviews Growth","tier":"low_reviews","reason":"Modern, mobile-responsive 2026-dated site, but only 11 Google reviews for the business \u2014 good fit for a review-growth offer.","score":24},{"name":"Norva Electric","phone":"+1 757-613-8724","type":"Electrical installation service","website":"https://www.norvaelectric.com/","reviewCount":11,"rating":4.6,"sell":"Google Reviews Growth","tier":"low_reviews","reason":"Current, professionally designed site (before/after galleries, clear CTAs) but only 11 Google reviews \u2014 review-growth opportunity, not a website rebuild.","score":24},{"name":"Tails of Hilton Pet Grooming","phone":"+1 757-750-4340","type":"Pet groomer","website":"https://tailsofhilton.com/","reviewCount":13,"rating":5.0,"sell":"Google Reviews Growth","tier":"low_reviews","reason":"Clean, modern Squarespace site but only 13 Google reviews (plus a small broken-link polish issue) \u2014 a light touch-up + review push would help more than a full rebuild.","score":22}]}
+</script>
+<script>
+  const DATA = JSON.parse(document.getElementById('lead-data').textContent);
+  const leads = DATA.leads;
+
+  const TIER_LABEL = {
+    no_website: "No Website",
+    outdated: "Outdated Site",
+    low_reviews: "Low Reviews",
+  };
+
+  document.getElementById('subtitle').textContent =
+    `${leads.length} leads · compiled ${DATA.generated} · sorted by highest-probability payoff`;
+
+  const counts = { all: leads.length, no_website: 0, outdated: 0, low_reviews: 0 };
+  leads.forEach(l => counts[l.tier]++);
+
+  const statsEl = document.getElementById('stats');
+  const statDefs = [
+    ["Total Leads", counts.all],
+    ["No Website", counts.no_website],
+    ["Outdated Site", counts.outdated],
+    ["Low Reviews", counts.low_reviews],
+  ];
+  statsEl.innerHTML = statDefs.map(([label, n]) =>
+    `<div class="stat"><div class="n">${n}</div><div class="l">${label}</div></div>`
+  ).join('');
+
+  const tabsEl = document.getElementById('tabs');
+  const tabDefs = [
+    ["all", "All"],
+    ["no_website", "No Website"],
+    ["outdated", "Outdated Site"],
+    ["low_reviews", "Low Reviews"],
+  ];
+  let activeTab = "all";
+
+  function render() {
+    tabsEl.innerHTML = tabDefs.map(([key, label]) =>
+      `<button class="tab${key === activeTab ? ' active' : ''}" data-tab="${key}">${label}</button>`
+    ).join('');
+    tabsEl.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => { activeTab = btn.dataset.tab; render(); });
+    });
+
+    const visible = activeTab === "all" ? leads : leads.filter(l => l.tier === activeTab);
+    const mainEl = document.getElementById('main');
+
+    mainEl.innerHTML = visible.map((l, i) => {
+      const rankTag = i < 3 && activeTab === "all"
+        ? `<div class="rank">🔥 #${i + 1} TOP PROSPECT</div>` : "";
+      const websiteLine = l.website
+        ? `<a href="${l.website}" target="_blank" rel="noopener">${l.website.replace(/^https?:\/\//, '')}</a>`
+        : `<span>No website found</span>`;
+      const phoneLine = l.phone
+        ? `<a href="tel:${l.phone.replace(/[^0-9+]/g, '')}">${l.phone}</a>`
+        : `<span>No phone on file</span>`;
+      const reviewLine = l.reviewCount > 0
+        ? `${l.rating.toFixed(1)}★ (${l.reviewCount} review${l.reviewCount === 1 ? '' : 's'})`
+        : `No reviews yet`;
+
+      return `
+        <div class="card">
+          ${rankTag}
+          <div class="card-top">
+            <div>
+              <div class="name">${l.name}</div>
+              <div class="type">${l.type || ''}</div>
+            </div>
+            <span class="badge ${l.tier}">${TIER_LABEL[l.tier]}</span>
+          </div>
+          <div class="meta">
+            <span>📞 ${phoneLine}</span>
+            <span>🌐 ${websiteLine}</span>
+            <span>⭐ ${reviewLine}</span>
+          </div>
+          <div class="row sell-line"><b>Sell them:</b> ${l.sell}</div>
+          <div class="row reason"><b>Weak point:</b> ${l.reason}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  render();
+</script>
+
+</body>
+</html>
